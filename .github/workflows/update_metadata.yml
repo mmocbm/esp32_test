@@ -1,0 +1,36 @@
+name: Update Firmware Metadata
+
+on:
+  push:
+    branches:
+      - main  # Trigger on pushes to the main branch
+
+jobs:
+  update-metadata:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Update metadata file
+        run: |
+          # Generate a version based on the current timestamp
+          NEW_VERSION=$(date +%Y%m%d%H%M%S)
+          FIRMWARE_URL="https://raw.githubusercontent.com/mmocbm/esp32_test/main/build/esp32.esp32.esp32/esp32_testing.ino.bin"
+
+          # Create or update the metadata file
+          echo '{"version": "'$NEW_VERSION'", "url": "'$FIRMWARE_URL'"}' > firmware_metadata.json
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add firmware_metadata.json
+          git commit -m "Automatically update firmware metadata to version $NEW_VERSION"
+          git push
