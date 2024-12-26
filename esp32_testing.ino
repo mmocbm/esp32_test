@@ -8,7 +8,7 @@ const char* ssid = "Dialog 4G 093";
 const char* password = "b786Fdd8";
 
 // Firmware update URL
-const char* firmware_url = "https://raw.githubusercontent.com/mmocbm/esp32-firmware-updates/main/firmwares/firmware_v2.bin";
+const char* firmware_url = "https://raw.githubusercontent.com/mmocbm/esp32_test/main/build/esp32.esp32.esp32/esp32_testing.ino.bin";
 
 // ==================== OTA Update Code ====================
 void setupOTA() {
