@@ -9,6 +9,9 @@ jobs:
   update-metadata:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write  # Grant write permissions to the GITHUB_TOKEN
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
