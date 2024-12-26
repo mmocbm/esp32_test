@@ -24,7 +24,7 @@ jobs:
       - name: Update metadata file
         run: |
           # Generate a version based on the current timestamp
-          NEW_VERSION=$(date +%Y%m%d%H%M%S)
+          NEW_VERSION=$(date +%H%M%S)
           FIRMWARE_URL="https://raw.githubusercontent.com/mmocbm/esp32_test/main/build/esp32.esp32.esp32/esp32_testing.ino.bin"
 
           # Create or update the metadata file
